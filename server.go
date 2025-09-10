@@ -11,7 +11,8 @@ import (
 
 type Message struct {
 	Text string
-	Time  string
+	Name string
+	Time string
 }
 
 type Data struct {
@@ -24,7 +25,7 @@ var (
 	clientsMux sync.Mutex
 	upgrader  = websocket.Upgrader{
 		CheckOrigin: func(r *http.Request) bool {
-			return true 
+			return true
 		},
 	}
 )
@@ -55,7 +56,6 @@ func websocketHandler(write http.ResponseWriter, request *http.Request) {
 	clients[conn] = true
 	clientsMux.Unlock()
 
-	
 	for _, msg := range messages {
 		err := conn.WriteJSON(msg)
 		if err != nil {
@@ -68,30 +68,55 @@ func websocketHandler(write http.ResponseWriter, request *http.Request) {
 		}
 	}
 
-	
 	for {
 		var msg Message
 		err := conn.ReadJSON(&msg)
 		if err != nil {
-			
 			clientsMux.Lock()
 			delete(clients, conn)
 			clientsMux.Unlock()
 			return
 		}
+		nameCookie, err := request.Cookie("username")
+		if err != nil || nameCookie == nil {
+       			http.Redirect(write, request, "/", http.StatusSeeOther)
+        		return
+    		}
+		username := nameCookie.Value
 
+		
 		msg.Time = time.Now().Format("15:04:05")
+		msg.Name = username
 		messages = append(messages, msg)
-		log.Printf("Received message: %s", msg.Text)
+		log.Printf("Received message from %s: %s", username, msg.Text);
 		broadcastMessages(msg)
 	}
 }
 
 func main() {
 	port := ":3000"
-	html_tmpl := template.Must(template.ParseFiles("index.html"))
+	login_tmpl := template.Must(template.ParseFiles("login.html"))
+	chat_tmpl := template.Must(template.ParseFiles("chat.html"))
 
 	http.HandleFunc("/", func(write http.ResponseWriter, request *http.Request) {
+		if request.Method == http.MethodPost {
+			request.ParseForm()
+			username := request.FormValue("username")
+			if username != "" {
+				http.SetCookie(write, &http.Cookie {
+                	Name: "username",
+                	Value: username,
+                	Path: "/",
+            	})
+				http.Redirect(write, request, "/chat.html", http.StatusSeeOther)
+            	return
+			}
+		}
+		login_tmpl.Execute(write, nil)
+	})
+
+	
+	http.HandleFunc("/chat.html", func(write http.ResponseWriter, request *http.Request) {
 		if request.Method == http.MethodPost {
 			request.ParseForm()
 			msgText := request.FormValue("msg")
@@ -101,7 +126,6 @@ func main() {
 					Time: time.Now().Format("15:04:05"),
 				}
 				messages = append(messages, msg)
-				log.Printf("Received message: %s", msgText)
 				broadcastMessages(msg)
 			}
 		}
@@ -110,8 +134,9 @@ func main() {
 			Messages: messages,
 		}
 
-		html_tmpl.Execute(write, data)
+		chat_tmpl.Execute(write, data)
 	})
+
 
 	http.HandleFunc("/ws", websocketHandler)
 

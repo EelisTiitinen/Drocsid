@@ -18,7 +18,7 @@
                 const msg = JSON.parse(event.data);
                 if (msg.Text !== "") {
                     const messageElement = document.createElement('p');
-                    messageElement.textContent = `${msg.Time}: ${msg.Text}`;
+                    messageElement.textContent = `${msg.Time}: ${msg.Name}: ${msg.Text}`;
                     document.getElementById("messages").appendChild(messageElement);
                 }
             };
@@ -33,7 +33,7 @@
         }
 
         function sendMessage(event) {
-            event.preventDefault();  
+            event.preventDefault();
             const messageInput = document.getElementById("message");
             const msg = messageInput.value;
             if (msg) {
@@ -47,16 +47,15 @@
 </head>
 <body>
 
-    
     <div id="messages">
-        {{range .Messages}}
-            <p>{{.Time}}: {{.Text}}</p>
-        {{end}}
+        
     </div>
-        <form onsubmit="sendMessage(event)">
-        <input type="text" id="message" placeholder="Type a message..." autocomplete="off">
+
+    <form onsubmit="sendMessage(event)">
+        <input type="text" id="message" placeholder="Message" autocomplete="off" required>
         <input type="submit" value="Send">
     </form>
+
 </body>
 </html>
 
