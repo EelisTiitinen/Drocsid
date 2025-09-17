@@ -9,18 +9,18 @@ html, body {
     height: 100%;
 }
  
-.container{
+#container {
     display: flex;
     flex-direction: column;
     height: 98vh;
 }
  
-.messages{
+#messages {
     overflow-y: auto;
     flex-grow: 1;  
 }
  
-#inputtext{
+#message-text {
     width: calc(100% - 72px);
     height: 44px;
     padding-left: 15px;
@@ -36,7 +36,7 @@ html, body {
     text-align: left;
 }
  
-#send{
+#send {
     width: 44px;
     height: 44px;
     padding-top: 4px;
@@ -51,7 +51,7 @@ html, body {
     border-radius: 30px;
 }
  
-.inputfield{
+#inputfield {
     margin-top: auto;
 }
  
@@ -60,7 +60,7 @@ html, body {
     opacity: 50%;
 }
  
-#msgtext{
+#message {
     min-height: 44px;
     max-height: 100%;
     width: fit-content;

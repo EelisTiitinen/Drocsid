@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/chat/style/chat_style.css">
-    <title>Drocsid</title>
     <script src="/chat/script/web_socket_handler.js"></script>
+	<title>Drocsid</title>
 </head>
 <body>
-	<div class="container">
-    <div id="messages">
+	<div id="container">
+   		<div id="messages">
         
-    </div>
-	<div class="inputfield">
-   	 	<form onsubmit="sendMessage(event)">
-        	<input type="text" id="message" placeholder="Message" autocomplete="off" required>
-        	<input type="submit" id="send">
-    	</form>
-	</div>
+   		</div>
+		<div id="inputfield">
+   	 		<form onsubmit="sendMessage(event)">
+        		<input type="text" id="message-text" placeholder="Message" autocomplete="off" required>
+        		<input type="submit" id="send">
+    		</form>
+		</div>
 	</div>
 </body>
 </html>

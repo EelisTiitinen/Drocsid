@@ -11,7 +11,7 @@ let socket;
                 const msg = JSON.parse(event.data);
                 if (msg.Text !== "") {
                     const messageElement = document.createElement('p');
-					messageElement.id = 'msgtext';
+					messageElement.id = 'message';
                     messageElement.textContent = `${msg.Time}: ${msg.Name}: ${msg.Text}`;
                     document.getElementById("messages").appendChild(messageElement);
                 }
@@ -28,7 +28,7 @@ let socket;
 
         function sendMessage(event) {
             event.preventDefault();
-            const messageInput = document.getElementById("message");
+            const messageInput = document.getElementById("message-text");
             const msg = messageInput.value;
             if (msg) {
                 socket.send(JSON.stringify({ Text: msg }));
