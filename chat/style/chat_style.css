@@ -1,9 +1,9 @@
 * {
-    background-color: rgb(49, 49, 49);  
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
  
-html, body {
+body {
+    background-color: rgb(49, 49, 49);  
     margin: 0;
     padding: 0;
     height: 100%;
