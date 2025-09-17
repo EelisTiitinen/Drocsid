@@ -95,8 +95,8 @@ func websocketHandler(write http.ResponseWriter, request *http.Request) {
 
 func main() {
 	port := ":3000"
-	login_tmpl := template.Must(template.ParseFiles("login.html"))
-	chat_tmpl := template.Must(template.ParseFiles("chat.html"))
+	login_tmpl := template.Must(template.ParseFiles("chat/login.html"))
+	chat_tmpl := template.Must(template.ParseFiles("chat/chat.html"))
 
 	http.HandleFunc("/", func(write http.ResponseWriter, request *http.Request) {
 		if request.Method == http.MethodPost {
