@@ -1,4 +1,4 @@
-*{
+* {
     background-color: rgb(49, 49, 49);  
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -12,7 +12,7 @@ html, body {
 #container {
     display: flex;
     flex-direction: column;
-    height: 98vh;
+    height: 100vh;
 }
  
 #messages {
@@ -24,7 +24,7 @@ html, body {
     width: calc(100% - 72px);
     height: 44px;
     padding-left: 15px;
-    margin: 12px 0px 0px 12px;
+    margin: 7px 0px 14px 12px;
     box-sizing: border-box;
     border-color: rgb(68, 68, 68);
     background-color: rgb(68, 68, 68);
@@ -45,7 +45,7 @@ html, body {
     background-position-y: 9px;
     background-position-x: 7px;
     background-repeat: no-repeat;
-    border-color: rgb(69, 69, 69);
+    border-color: rgb(68, 68, 68);
     background-color: rgb(68, 68, 68);
     border-style: solid;
     border-radius: 30px;
@@ -65,7 +65,7 @@ html, body {
     max-height: 100%;
     width: fit-content;
     padding: 9px 15px 12px 15px;
-    margin: 12px 12px 12px 12px;
+    margin: 12px 12px 5px 12px;
     box-sizing: border-box;
     border-color: rgb(68, 68, 68);
     background-color: rgb(68, 68, 68);
@@ -76,3 +76,21 @@ html, body {
     outline: none;
     text-align: left;
 }
+ 
+::-webkit-scrollbar {
+    width: 10px;
+  }
+ 
+  ::-webkit-scrollbar-track {
+    background: rgb(49, 49, 49);  
+    border-radius: 15px;    
+  }
+ 
+  ::-webkit-scrollbar-thumb {
+    background: rgb(68, 68, 68);    
+    border-radius: 15px;
+  }
+ 
+  ::-webkit-scrollbar-thumb:hover {
+    background: #878787
+  }
