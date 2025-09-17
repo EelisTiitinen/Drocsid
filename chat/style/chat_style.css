@@ -41,7 +41,7 @@ html, body {
     height: 44px;
     padding-top: 4px;
     box-sizing: border-box;
-    background-image: url(icons/send.svg);
+    background-image: url(/chat/icons/send.svg);
     background-position-y: 9px;
     background-position-x: 7px;
     background-repeat: no-repeat;
@@ -78,19 +78,19 @@ html, body {
 }
  
 ::-webkit-scrollbar {
-    width: 10px;
-  }
+	width: 10px;
+}
  
-  ::-webkit-scrollbar-track {
-    background: rgb(49, 49, 49);  
+::-webkit-scrollbar-track {
+	background: rgb(49, 49, 49);  
     border-radius: 15px;    
-  }
+}
  
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: rgb(68, 68, 68);    
     border-radius: 15px;
-  }
+}
  
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: #878787
-  }
+}
