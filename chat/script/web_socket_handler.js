@@ -10,10 +10,34 @@ function startChat() {
     socket.onmessage = function(event) {
         const msg = JSON.parse(event.data);
         if (msg.Text !== "") {
-            const messageElement = document.createElement('p');
+            const messageElement = document.createElement('div');
             messageElement.id = 'message';
-            messageElement.textContent = `${msg.Time}: ${msg.Name}: ${msg.Text}`;
-            document.getElementById("messages").appendChild(messageElement);
+
+			const messageTime = document.createElement('p');
+			messageTime.textContent = `${msg.Time}`;
+			messageTime.id = 'time';
+
+			const messageUser = document.createElement('p');
+			messageUser.textContent = `${msg.Name}`;
+			messageUser.id = 'username';
+
+			const messageText = document.createElement('p');
+			messageText.textContent = `${msg.Text}`;
+			messageText.id = 'text';
+
+			const nameTimeDiv = document.createElement('div');
+			nameTimeDiv.id = 'name-time';
+
+			nameTimeDiv.appendChild(messageUser);
+			nameTimeDiv.appendChild(messageTime);
+			
+			messageElement.appendChild(nameTimeDiv);
+			messageElement.appendChild(messageText);
+
+            const msgContainer = document.getElementById("messages");
+			msgContainer.appendChild(messageElement);
+
+			msgContainer.scrollTop = msgContainer.scrollHeight;
         }
     };
 

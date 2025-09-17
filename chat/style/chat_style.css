@@ -14,12 +14,13 @@ body {
     flex-direction: column;
     height: 100vh;
 }
- 
+
 #messages {
     overflow-y: auto;
     flex-grow: 1;  
+	
 }
- 
+
 #message-text {
     width: calc(100% - 72px);
     height: 44px;
@@ -63,7 +64,7 @@ body {
 #message {
     min-height: 44px;
     max-height: 100%;
-    width: fit-content;
+	width: fit-content;    
     padding: 9px 15px 12px 15px;
     margin: 12px 12px 5px 12px;
     box-sizing: border-box;
@@ -75,6 +76,9 @@ body {
     color: #CCCCCC;
     outline: none;
     text-align: left;
+	white-space: normal;         
+    overflow-wrap: break-word;  
+    word-break: break-word;
 }
  
 ::-webkit-scrollbar {
