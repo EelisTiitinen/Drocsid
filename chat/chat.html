@@ -3,118 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Chat</title>
-    <script>
-        let socket;
-
-        function startChat() {
-            socket = new WebSocket('ws://' + window.location.host + '/ws');
-
-            socket.onopen = function() {
-                console.log("Connected to WebSocket server");
-            };
-
-            socket.onmessage = function(event) {
-                const msg = JSON.parse(event.data);
-                if (msg.Text !== "") {
-                    const messageElement = document.createElement('p');
-					messageElement.id = 'msgtext';
-                    messageElement.textContent = `${msg.Time}: ${msg.Name}: ${msg.Text}`;
-                    document.getElementById("messages").appendChild(messageElement);
-                }
-            };
-
-            socket.onerror = function(error) {
-                console.log("WebSocket Error: " + error);
-            };
-
-            socket.onclose = function() {
-                console.log("Disconnected from WebSocket server");
-            };
-        }
-
-        function sendMessage(event) {
-            event.preventDefault();
-            const messageInput = document.getElementById("message");
-            const msg = messageInput.value;
-            if (msg) {
-                socket.send(JSON.stringify({ Text: msg }));
-                messageInput.value = '';
-            }
-        }
-
-        window.onload = startChat;
-    </script>
-	<style>
-		*{
-    background-color: rgb(49, 49, 49);  
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    height: 98vh;
-}
-
-#message{
-    width: calc(100% - 72px);
-    height: 44px;
-    padding-left: 15px;
-    padding-bottom: 3px;
-    margin: 12px 0px 10px 12px;
-    box-sizing: border-box;
-    border-color: rgb(68, 68, 68);
-    background-color: rgb(68, 68, 68);
-    border-style: solid;
-    border-radius: 15px;
-    font-size: 17px;
-    color: #CCCCCC;
-    outline: none;
-    text-align: left;
-}
-
-#send{
-    width: 44px;
-    height: 44px;
-    box-sizing: border-box;
-    background-image: url(icons/send.svg);
-    background-position-y: 9px;
-    background-position-x: 7px;
-    background-repeat: no-repeat;
-    border-color: rgb(69, 69, 69);
-    background-color: rgb(68, 68, 68);
-    border-style: solid;
-    border-radius: 30px;
-}
-
-.inputfield{
-    margin-top: auto;
-}
-
-::placeholder {
-    color: #CCCCCC;
-    opacity: 50%;
-}
-
-#msgtext{
-    min-height: 44px;
-    max-height: 100%;
-    width: fit-content;
-    padding: 9px 15px 12px 15px;
-    margin: 12px 12px 0px 12px;
-    box-sizing: border-box;
-    border-color: rgb(68, 68, 68);
-    background-color: rgb(68, 68, 68);
-    border-style: solid;
-    border-radius: 15px;
-    font-size: 17px;
-    color: #CCCCCC;
-    outline: none;
-    text-align: left;
-}
-
-	</style>
+	<link rel="stylesheet" href="/chat/style/chat_style.css">
+    <title>Drocsid</title>
+    <script src="/chat/script/web_socket_handler.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -124,7 +15,7 @@
 	<div class="inputfield">
    	 	<form onsubmit="sendMessage(event)">
         	<input type="text" id="message" placeholder="Message" autocomplete="off" required>
-        	<input type="submit" value="Send" id="send">
+        	<input type="submit" id="send">
     	</form>
 	</div>
 	</div>
