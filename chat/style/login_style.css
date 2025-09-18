@@ -1,4 +1,53 @@
-* { 
+*{
+    background-color: rgb(49, 49, 49);  
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+}
+
+#username{
+    width: 300px;
+    height: 44px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    border-color: rgb(68, 68, 68);
+    background-color: rgb(68, 68, 68);
+    border-style: solid;
+    border-radius: 15px;
+    font-size: 17px;
+    color: #CCCCCC;
+    outline: none;
+    text-align: left;
+}
+
+#login{
+    width: 44px;
+    height: 44px;
+    padding-top: 4px;
+    box-sizing: border-box;
+    background-image: url(icons/log-in.svg);
+    background-position-y: 8px;
+    background-position-x: 6px;
+    background-repeat: no-repeat;
+    border-color: rgb(68, 68, 68);
+    background-color: rgb(68, 68, 68);
+    border-style: solid;
+    border-radius: 30px;
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    margin-top: 50px;
+}
+.logo{
+    text-align: center;
 }
 
