@@ -1,6 +1,7 @@
 package main
 
 import (
+	"net"
 	"log"
 	"net/http"
 	"sync"
@@ -29,6 +30,18 @@ var (
 		},
 	}
 )
+
+func IPAddr() net.IP {
+	conn, err := net.Dial("udp", "8.8.8.8:80")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer conn.Close()
+
+	IPAddr := conn.LocalAddr().(*net.UDPAddr)
+
+	return IPAddr.IP
+}
 
 func broadcastMessages(msg Message) {
 	clientsMux.Lock()
@@ -139,7 +152,7 @@ func main() {
 
 	http.HandleFunc("/ws", websocketHandler)
 
-	log.Printf("Listening on port %s", port)
+	log.Printf("Listening on %s%s", IPAddr(), port)
 	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		log.Fatal("Error starting server: ", err)
