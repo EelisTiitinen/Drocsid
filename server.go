@@ -111,6 +111,7 @@ func main() {
 	login_tmpl := template.Must(template.ParseFiles("chat/login.html"))
 	chat_tmpl := template.Must(template.ParseFiles("chat/chat.html"))
 	http.Handle("/chat/", http.StripPrefix("/chat/", http.FileServer(http.Dir("chat"))))
+
 	http.HandleFunc("/", func(write http.ResponseWriter, request *http.Request) {
 		if request.Method == http.MethodPost {
 			request.ParseForm()

@@ -30,7 +30,7 @@
     height: 44px;
     padding-top: 4px;
     box-sizing: border-box;
-    background-image: url(icons/log-in.svg);
+    background-image: url(/chat/icons/log-in.svg);
     background-position-y: 8px;
     background-position-x: 6px;
     background-repeat: no-repeat;
@@ -47,7 +47,3 @@ img{
     width: 500px;
     margin-top: 50px;
 }
-.logo{
-    text-align: center;
-}
-
