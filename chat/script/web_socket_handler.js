@@ -12,7 +12,8 @@ function startChat() {
         if (msg.Text !== "") {
             const messageElement = document.createElement('div');
             messageElement.id = 'message';
-		const messageTime = document.createElement('p');
+			
+			const messageTime = document.createElement('p');
 			messageTime.textContent = `${msg.Time}`;
 			messageTime.id = 'time';
 
@@ -40,8 +41,6 @@ function startChat() {
 				messageText.id = 'text';
 				messageElement.appendChild(messageText);
 			}
-
-			
 
             const msgContainer = document.getElementById("messages");
 			msgContainer.appendChild(messageElement);
