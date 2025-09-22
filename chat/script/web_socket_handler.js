@@ -1,4 +1,4 @@
-let socket;
+﻿let socket;
 
 function startChat() {
     socket = new WebSocket('ws://' + window.location.host + '/ws');
@@ -12,18 +12,13 @@ function startChat() {
         if (msg.Text !== "") {
             const messageElement = document.createElement('div');
             messageElement.id = 'message';
-
-			const messageTime = document.createElement('p');
+		const messageTime = document.createElement('p');
 			messageTime.textContent = `${msg.Time}`;
 			messageTime.id = 'time';
 
 			const messageUser = document.createElement('p');
 			messageUser.textContent = `${msg.Name}`;
 			messageUser.id = 'username';
-
-			const messageText = document.createElement('p');
-			messageText.textContent = `${msg.Text}`;
-			messageText.id = 'text';
 
 			const nameTimeDiv = document.createElement('div');
 			nameTimeDiv.id = 'name-time';
@@ -32,7 +27,21 @@ function startChat() {
 			nameTimeDiv.appendChild(messageTime);
 			
 			messageElement.appendChild(nameTimeDiv);
-			messageElement.appendChild(messageText);
+
+			if (msg.Text.indexOf(".jpg") != -1 || msg.Text.indexOf(".png") != -1 || msg.Text.indexOf(".gif") != -1) {
+				const messageImage = document.createElement('img');
+				messageImage.src = `${msg.Text}`;
+				messageImage.id = 'image';
+				messageElement.appendChild(messageImage);
+			}
+			else {
+				const messageText = document.createElement('p');
+				messageText.textContent = `${msg.Text}`;
+				messageText.id = 'text';
+				messageElement.appendChild(messageText);
+			}
+
+			
 
             const msgContainer = document.getElementById("messages");
 			msgContainer.appendChild(messageElement);
