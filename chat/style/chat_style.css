@@ -42,7 +42,7 @@ body {
     height: 44px;
     padding-top: 4px;
     box-sizing: border-box;
-    background-image: url(/chat/icons/send.svg);
+    background-image: url(icons/send.svg);
     background-position-y: 9px;
     background-position-x: 7px;
     background-repeat: no-repeat;
@@ -93,6 +93,20 @@ body {
     word-break: break-word;
 }
 
+#image {
+    padding: 4px;
+    margin: -15px 0px 14px 12px;
+    box-sizing: border-box;
+    border-color: rgb(68, 68, 68);
+    background-color: rgb(68, 68, 68);
+    border-style: solid;
+    border-radius: 15px;
+    color: #CCCCCC;
+    outline: none;
+    min-height: 300px;
+    max-height: 300px;
+}
+
 #time { 
     color: #888888;
     font-size: 12px;
@@ -116,3 +130,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #878787
 }
+
