@@ -42,7 +42,7 @@ body {
     height: 44px;
     padding-top: 4px;
     box-sizing: border-box;
-    background-image: url(icons/send.svg);
+    background-image: url(/chat/icons/send.svg);
     background-position-y: 9px;
     background-position-x: 7px;
     background-repeat: no-repeat;
@@ -130,5 +130,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #878787
 }
-
 
