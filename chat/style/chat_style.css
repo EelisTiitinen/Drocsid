@@ -95,7 +95,7 @@ body {
 
 #image {
     padding: 4px;
-    margin: -15px 0px 14px 12px;
+    margin: -15px 0px 5px 12px;
     box-sizing: border-box;
     border-color: rgb(68, 68, 68);
     background-color: rgb(68, 68, 68);
@@ -130,4 +130,5 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #878787
 }
+
 
